@@ -24,7 +24,7 @@
     4. npm install express
     5. create server.js
     6. add start command as node backend/server.js
-    7. requre express
+    7. require express
     8. create route for / result backend is ready
     9. move products.js from frontend to backend
     10. create route for /api/products
@@ -37,3 +37,8 @@
     3. use state hook
     4. use effect hook
     5. use reducer hook
+
+7. Manage State By Reducer Hook
+    1. define reducer
+    2. update fetch data
+    3. get state from usReducer
