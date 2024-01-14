@@ -42,7 +42,12 @@
     1. define reducer
     2. update fetch data
     3. get state from usReducer
-    
+
 8. Add bootstrap UI Framework
     1. npm install react-bootstrap bootstrap
     2. update App.js
+
+9. Create Product and Rating Component
+    1. create Rating Component
+    2. create Product Component
+    3. Use Rating Component in Product Component
