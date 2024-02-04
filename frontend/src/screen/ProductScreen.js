@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useReducer } from 'react';
-import Col, { useCol } from 'react-bootstrap/esm/Col';
+import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
 import { useNavigate, useParams } from 'react-router-dom';
 import Rating from '../components/Rating';
