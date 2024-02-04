@@ -82,3 +82,7 @@
     2. Click handler for remove item
     3. click handler for checkout
 
+16. Create Sign-in Screen
+    1. create sign in form
+    2. add email and password
+    3. ass sign-in button
