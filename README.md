@@ -103,4 +103,4 @@
 19. Seed Sample User
     1. create User model
     2. seed sample route
-    3. create user routes
+    3. create user routesToken
