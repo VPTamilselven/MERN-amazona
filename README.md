@@ -104,3 +104,9 @@
     1. create User model
     2. seed sample route
     3. create user routesToken
+
+20. Complete SignIn Screen
+    1. handle submit action
+    2. save token in store and local storage
+    3. show user name in header
+
