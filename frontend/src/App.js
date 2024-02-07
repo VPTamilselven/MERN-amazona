@@ -13,6 +13,7 @@ import { Store } from './Store';
 import CartScreen from './screen/CartScreen';
 import SigninScreen from './screen/SigninScreen';
 import { NavDropdown } from 'react-bootstrap';
+import ShippingAddressScreen from './screen/ShippingAddressScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -21,11 +22,13 @@ function App() {
   const signoutHandler=() => {
     ctxDispatch({ type: 'USER_SIGNOUT' })
     localStorage.removeItem('userInfo')
+    localStorage.removeItem('shippingAddress')
+
   }
   return (
     <BrowserRouter>
       <div className="d-flex flex-column site-container">
-        <ToastContainer position='bottom-center' limit={1} />
+        <ToastContainer position="bottom-center" limit={1} />
         <header>
           <Navbar bg="dark" variant="dark">
             <Container>
@@ -50,10 +53,13 @@ function App() {
                       <NavDropdown.Item>Order History</NavDropdown.Item>
                     </LinkContainer>
                     <NavDropdown.Divider />
-                    <Link className='dropdown-item'
-                      to='#signout'
+                    <Link
+                      className="dropdown-item"
+                      to="#signout"
                       onClick={signoutHandler}
-                    >Sign Out</Link>
+                    >
+                      Sign Out
+                    </Link>
                   </NavDropdown>
                 ) : (
                   <Link className="nav-link" to="/signin">
@@ -72,6 +78,7 @@ function App() {
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/" element={<HomeScreen />} />
               <Route path="/signin" element={<SigninScreen />} />
+              <Route path="/shipping" element={<ShippingAddressScreen />} />
               <Route path="/cart" element={<CartScreen />} />
             </Routes>
           </Container>
