@@ -1,19 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react'
-import CheckoutSteps from '../components/CheckoutSteps'
-import { Helmet } from 'react-helmet-async'
-import { Button, Form, FormCheck } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
-import { Store } from '../Store'
+import React, { useContext, useEffect, useState } from 'react';
+import CheckoutSteps from '../components/CheckoutSteps';
+import { Helmet } from 'react-helmet-async';
+import { Button, Form, FormCheck } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { Store } from '../Store';
 
 export default function PaymentMethodScreen() {
-
-  const navigate = useNavigate()
-  const { state, dispatch: ctxDispatch } = useContext(Store)
+  const navigate = useNavigate();
+  const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
-    cart: { shippingAddress,paymentMethod},
-  } = state
+    cart: { shippingAddress, paymentMethod },
+  } = state;
 
-const [paymentMethodName,setPaymentMethod]=useState(paymentMethod || 'paypal')
+  const [paymentMethodName, setPaymentMethod] = useState(
+    paymentMethod || 'PayPal'
+  );
 
   useEffect(() => {
     if (!shippingAddress.address) {
@@ -22,11 +23,11 @@ const [paymentMethodName,setPaymentMethod]=useState(paymentMethod || 'paypal')
   }, [shippingAddress, navigate]);
 
   const submitHandler = (e) => {
-    e.preventDefault()  
-    ctxDispatch({ type: 'SAVE_PAYMENT_METHOD', payload: paymentMethodName })
-    localStorage.setItem('paymentMethod', paymentMethodName)
-    navigate('/placeorder')
-  }
+    e.preventDefault();
+    ctxDispatch({ type: 'SAVE_PAYMENT_METHOD', payload: paymentMethodName });
+    localStorage.setItem('paymentMethod', paymentMethodName);
+    navigate('/placeorder');
+  };
 
   return (
     <div>
@@ -56,8 +57,8 @@ const [paymentMethodName,setPaymentMethod]=useState(paymentMethod || 'paypal')
               onChange={(e) => setPaymentMethod(e.target.value)}
             />
           </div>
-          <div className='mb-3'>
-            <Button type='submit'>Continue</Button>
+          <div className="mb-3">
+            <Button type="submit">Continue</Button>
           </div>
         </Form>
       </div>
