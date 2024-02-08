@@ -128,7 +128,6 @@ export default function OrderScreen() {
                   </ListGroup.Item>
                 ))}
               </ListGroup>
-              
             </Card.Body>
           </Card>
         </Col>
@@ -170,6 +169,7 @@ export default function OrderScreen() {
           </Card>
         </Col>
       </Row>
-    </div>
+        </div>
+        
   );
 }
