@@ -5,6 +5,7 @@ import { Button, Form } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import { getError } from '../utill'
 import axios from 'axios'
+import API_URL_PATH from '../apiPath'
 
 
 const reducer = (state, action) => {
@@ -39,16 +40,16 @@ export default function ProfileScreen() {
     e.preventDefault()
     try {
       const { data } = await axios.put(
-        '/api/users/profile',
+        API_URL_PATH + '/api/users/profile',
         {
           name,
           email,
-          password
+          password,
         },
         {
-          headers:{Authorization: `Bearer ${userInfo.token}`}
+          headers: { Authorization: `Bearer ${userInfo.token}` },
         }
-      )
+      );
       dispatch({
         type: 'UPDATE_SUCCESS'
       })

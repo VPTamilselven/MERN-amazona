@@ -38,9 +38,9 @@ app.get('*', (req, res) =>
 res.sendFile(path.join(__dirname,'/frontend/build/index.html'))
 )
 
-app.use((err, res, req, next) => {
-  res.status(500).send({ message: err.message });
-});
+// app.use((err, res, req, next) => {
+//   res.status(500).send({ message: err.message });
+// });
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

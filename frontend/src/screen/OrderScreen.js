@@ -9,6 +9,7 @@ import { getError } from '../utill';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 import { Card, Col, ListGroup, Row } from 'react-bootstrap';
+import API_URL_PATH from '../apiPath';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -71,6 +72,7 @@ export default function OrderScreen() {
       try {
         dispatch({ type: 'PAY_REQUEST' });
         const { data } = await axios.put(
+          API_URL_PATH +
           `/api/orders/${order._id}/pay`,
 
           details,
@@ -95,9 +97,12 @@ export default function OrderScreen() {
     const fetchOrder = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/orders/${orderId}`, {
-          headers: { authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(
+          API_URL_PATH + `/api/orders/${orderId}`,
+          {
+            headers: { authorization: `Bearer ${userInfo.token}` },
+          }
+        );
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
@@ -114,9 +119,12 @@ export default function OrderScreen() {
       }
     } else {
       const loadPaypalScript = async () => {
-        const { data: clientId } = await axios.get('/api/keys/paypal', {
-          headers: { authorization: `Bearer${userInfo.token}` },
-        });
+        const { data: clientId } = await axios.get(
+          API_URL_PATH + '/api/keys/paypal',
+          {
+            headers: { authorization: `Bearer${userInfo.token}` },
+          }
+        );
         paypalDispatch({
           type: 'resetOptions',
           value: {

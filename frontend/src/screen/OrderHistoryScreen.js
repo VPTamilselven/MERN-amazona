@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { getError } from '../utill';
 import { Button } from 'react-bootstrap';
+import API_URL_PATH from '../apiPath';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -36,10 +37,9 @@ export default function OrderHistoryScreen() {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' })
       try {
-        const { data } = await axios.get(
-          '/api/orders/mine',
-          { headers: { authorization: `Bearer ${userInfo.token}` } }
-        );
+        const { data } = await axios.get(API_URL_PATH + '/api/orders/mine', {
+          headers: { authorization: `Bearer ${userInfo.token}` },
+        });
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (error) {
         dispatch({ type: 'FETCH_FAIL', payload: getError(error) });

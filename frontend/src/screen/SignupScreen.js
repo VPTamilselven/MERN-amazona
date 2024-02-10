@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Store } from '../Store';
 import { toast } from 'react-toastify';
 import { getError } from '../utill';
+import API_URL_PATH from '../apiPath';
 
 
 function SignupScreen() {
@@ -31,7 +32,7 @@ function SignupScreen() {
     }
 
     try {
-      const { data } = await axios.post('/api/users/signup', {
+      const { data } = await axios.post(API_URL_PATH + '/api/users/signup', {
         name,
         email,
         password,

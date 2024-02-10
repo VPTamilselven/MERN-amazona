@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Store } from '../Store';
 import { toast } from 'react-toastify';
 import { getError } from '../utill';
+import API_URL_PATH from '../apiPath';
 
 
 function SigninScreen() {
@@ -25,7 +26,7 @@ function SigninScreen() {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post('/api/users/signin', {
+      const { data } = await axios.post(API_URL_PATH + '/api/users/signin', {
         email,
         password,
       });
