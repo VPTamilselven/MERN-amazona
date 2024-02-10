@@ -23,6 +23,7 @@ import ProfileScreen from './screen/ProfileScreen';
 import { getError } from './utill';
 import axios from 'axios';
 import SearchBox from './components/SearchBox';
+import API_URL_PATH from './apiPath';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -42,7 +43,7 @@ function App() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get(`/api/products/categories`);
+        const { data } = await axios.get(API_URL_PATH+`/api/products/categories`);
         setCategories(data);
       } catch (err) {
         toast.error(getError(err));
